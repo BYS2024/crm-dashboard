@@ -108,7 +108,7 @@ const DB = {
   interacciones:'ef9d3538-30c0-41c2-96b8-d487eaced3b5'
 };
 
-const PROXY = 'https://api.allorigins.win/raw?url=';
+const PROXY = 'https://corsproxy.io/?url=';
 
 async function queryDB(dbId, body={}) {
   const url = `https://api.notion.com/v1/databases/${dbId}/query`;
@@ -400,23 +400,6 @@ async function loadAll() {
 }
 
 loadAll();
-
-// Auto-refresh cada 30 segundos
-let countdown = 30;
-const countEl = document.getElementById('lastUpdate');
-
-setInterval(() => {
-  countdown--;
-  if(countdown <= 0) {
-    countdown = 30;
-    loadAll();
-  } else {
-    const current = countEl.textContent;
-    if(current.includes('Actualizado')) {
-      countEl.textContent = current.split('·')[0].trim() + ` · refresca en ${countdown}s`;
-    }
-  }
-}, 1000);
 </script>
 </body>
 </html>

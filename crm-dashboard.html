@@ -12,6 +12,7 @@
   --bg:#0f1117;--surface:#1a1d27;--surface2:#22263a;
   --border:#2a2d3e;--text:#e8e6e0;--muted:#6b7280;--faint:#3a3d4e;
   --blue:#2a78d6;--green:#1baf7a;--amber:#eda100;--red:#e34948;--purple:#7c6fcd;
+  --bg-purple:rgba(124,111,205,0.12);
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh}
 a{color:var(--blue);text-decoration:none}
@@ -27,7 +28,7 @@ a{color:var(--blue);text-decoration:none}
 
 .main{padding:24px 28px;max-width:1400px}
 
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;position:relative;overflow:hidden}
 .kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;border-radius:3px 0 0 3px}
 .kpi-blue::before{background:var(--blue)}
@@ -41,6 +42,8 @@ a{color:var(--blue);text-decoration:none}
 .kpi-amber .kpi-value{color:var(--amber)}
 .kpi-red .kpi-value{color:var(--red)}
 .kpi-green .kpi-value{color:var(--green)}
+.kpi-purple::before{background:var(--purple)}
+.kpi-purple .kpi-value{color:var(--purple)}
 .kpi-sub{font-size:11px;color:var(--muted)}
 
 .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
@@ -105,7 +108,7 @@ a{color:var(--blue);text-decoration:none}
     </div>
     <div class="kpi kpi-amber">
       <div class="kpi-label">Tareas pendientes</div>
-      <div class="kpi-value">18+</div>
+      <div class="kpi-value">2</div>
       <div class="kpi-sub">Sin completar</div>
     </div>
     <div class="kpi kpi-red">
@@ -114,6 +117,11 @@ a{color:var(--blue);text-decoration:none}
       <div class="kpi-sub">Agrega facturas al CRM</div>
     </div>
     <div class="kpi kpi-green">
+      <div class="kpi-label">Tareas para hoy</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">Pendientes hoy</div>
+    </div>
+    <div class="kpi kpi-purple">
       <div class="kpi-label">Interacciones</div>
       <div class="kpi-value">—</div>
       <div class="kpi-sub">Registra tus contactos</div>

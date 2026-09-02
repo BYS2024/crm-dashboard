@@ -12,22 +12,23 @@
   --bg:#0f1117;--surface:#1a1d27;--surface2:#22263a;
   --border:#2a2d3e;--text:#e8e6e0;--muted:#6b7280;--faint:#3a3d4e;
   --blue:#2a78d6;--green:#1baf7a;--amber:#eda100;--red:#e34948;--purple:#7c6fcd;
-  --bg-purple:rgba(124,111,205,0.12);
 }
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh}
 a{color:var(--blue);text-decoration:none}
-
-.header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0;border-bottom:1px solid var(--border);padding-bottom:16px}
+.header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px 16px;border-bottom:1px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px}
 .logo-dot{width:8px;height:8px;background:var(--blue);border-radius:50%}
 .logo-text{font-size:15px;font-weight:600;letter-spacing:-0.3px}
+.header-right{display:flex;align-items:center;gap:12px}
 .header-date{font-size:12px;color:var(--muted)}
+.refresh-btn{font-size:11px;color:var(--blue);background:rgba(42,120,214,.1);border:1px solid rgba(42,120,214,.25);padding:5px 12px;border-radius:6px;cursor:pointer}
+.refresh-btn:hover{background:rgba(42,120,214,.2)}
+.loading{text-align:center;padding:60px;color:var(--muted);font-size:13px}
+.error{text-align:center;padding:40px;color:var(--red);font-size:13px}
 .nav{display:flex;gap:6px;padding:14px 28px;border-bottom:1px solid var(--border);flex-wrap:wrap}
 .nav a{font-size:12px;color:var(--muted);padding:5px 12px;border-radius:6px;border:1px solid var(--border);transition:all .15s}
 .nav a:hover{color:var(--text);border-color:var(--faint);background:var(--surface)}
-
 .main{padding:24px 28px;max-width:1400px}
-
 .kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
 .kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;position:relative;overflow:hidden}
 .kpi::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;border-radius:3px 0 0 3px}
@@ -35,30 +36,26 @@ a{color:var(--blue);text-decoration:none}
 .kpi-amber::before{background:var(--amber)}
 .kpi-red::before{background:var(--red)}
 .kpi-green::before{background:var(--green)}
-.kpi-label{font-size:11px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.kpi-label svg{opacity:.6}
+.kpi-purple::before{background:var(--purple)}
+.kpi-label{font-size:11px;color:var(--muted);margin-bottom:8px}
 .kpi-value{font-size:28px;font-weight:600;line-height:1;margin-bottom:4px}
 .kpi-blue .kpi-value{color:var(--blue)}
 .kpi-amber .kpi-value{color:var(--amber)}
 .kpi-red .kpi-value{color:var(--red)}
 .kpi-green .kpi-value{color:var(--green)}
-.kpi-purple::before{background:var(--purple)}
 .kpi-purple .kpi-value{color:var(--purple)}
 .kpi-sub{font-size:11px;color:var(--muted)}
-
 .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 .chart-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px}
 .chart-box-wide{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px}
-.chart-title{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:16px;text-transform:none;letter-spacing:0}
+.chart-title{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:16px}
 .legend{display:flex;gap:14px;margin-bottom:12px;flex-wrap:wrap}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
 .legend-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0}
-
 .bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px}
 .panel-title{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
 .panel-title a{font-size:11px;color:var(--blue)}
-
 .task-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)}
 .task-item:last-child{border-bottom:none}
 .task-name{font-size:13px;color:var(--text);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:12px}
@@ -67,16 +64,12 @@ a{color:var(--blue);text-decoration:none}
 .badge-blue{background:rgba(42,120,214,.12);color:var(--blue);border:1px solid rgba(42,120,214,.2)}
 .badge-muted{background:var(--faint);color:var(--muted);border:1px solid var(--border)}
 .badge-green{background:rgba(27,175,122,.12);color:var(--green);border:1px solid rgba(27,175,122,.2)}
-
 .proj-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
 .proj-item:last-child{border-bottom:none}
 .proj-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .proj-name{font-size:13px;color:var(--text);flex:1}
 .proj-client{font-size:11px;color:var(--muted)}
-
-.section-label{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.5px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-
-.divider{height:1px;background:var(--border);margin:8px 0 24px}
+.empty{font-size:12px;color:var(--muted);padding:20px 0;text-align:center}
 </style>
 </head>
 <body>
@@ -86,7 +79,10 @@ a{color:var(--blue);text-decoration:none}
     <div class="logo-dot"></div>
     <span class="logo-text">CRM Dashboard</span>
   </div>
-  <span class="header-date">1 septiembre 2026</span>
+  <div class="header-right">
+    <span class="header-date" id="lastUpdate">Cargando...</span>
+    <button class="refresh-btn" onclick="loadAll()">↻ Actualizar</button>
+  </div>
 </div>
 
 <nav class="nav">
@@ -98,141 +94,329 @@ a{color:var(--blue);text-decoration:none}
   <a href="https://app.notion.com/p/841ab2635ecc4b2aa0ec4863c270f7d0" target="_blank">💬 Interacciones</a>
 </nav>
 
-<div class="main">
-
-  <div class="kpi-row">
-    <div class="kpi kpi-blue">
-      <div class="kpi-label">Proyectos activos</div>
-      <div class="kpi-value">8</div>
-      <div class="kpi-sub">Diversidad, Venta, MPD…</div>
-    </div>
-    <div class="kpi kpi-amber">
-      <div class="kpi-label">Tareas pendientes</div>
-      <div class="kpi-value">2</div>
-      <div class="kpi-sub">Sin completar</div>
-    </div>
-    <div class="kpi kpi-red">
-      <div class="kpi-label">Facturas por cobrar</div>
-      <div class="kpi-value">—</div>
-      <div class="kpi-sub">Agrega facturas al CRM</div>
-    </div>
-    <div class="kpi kpi-green">
-      <div class="kpi-label">Tareas para hoy</div>
-      <div class="kpi-value">1</div>
-      <div class="kpi-sub">Pendientes hoy</div>
-    </div>
-    <div class="kpi kpi-purple">
-      <div class="kpi-label">Interacciones</div>
-      <div class="kpi-value">—</div>
-      <div class="kpi-sub">Registra tus contactos</div>
-    </div>
-  </div>
-
-  <div class="charts-grid">
-    <div class="chart-box">
-      <div class="chart-title">Proyectos por estado</div>
-      <div class="legend">
-        <span class="legend-item"><span class="legend-sq" style="background:#2a78d6"></span>En curso (6)</span>
-        <span class="legend-item"><span class="legend-sq" style="background:#eda100"></span>Sin iniciar (2)</span>
-        <span class="legend-item"><span class="legend-sq" style="background:#1baf7a"></span>Completado (0)</span>
-      </div>
-      <div style="position:relative;height:200px">
-        <canvas id="c1" role="img" aria-label="Proyectos por estado: 6 en curso, 2 sin iniciar">6 en curso, 2 sin iniciar.</canvas>
-      </div>
-    </div>
-    <div class="chart-box">
-      <div class="chart-title">Tareas por proyecto</div>
-      <div style="position:relative;height:230px">
-        <canvas id="c2" role="img" aria-label="Cantidad de tareas por proyecto">Distribución de tareas por proyecto.</canvas>
-      </div>
-    </div>
-  </div>
-
-  <div class="chart-box-wide">
-    <div class="chart-title">Actividad semanal — tareas registradas</div>
-    <div style="position:relative;height:130px">
-      <canvas id="c3" role="img" aria-label="Actividad semanal de tareas desde julio">Tareas registradas semana a semana desde julio.</canvas>
-    </div>
-  </div>
-
-  <div class="bottom-grid">
-    <div class="panel">
-      <div class="panel-title">
-        <span>Tareas en curso</span>
-        <a href="https://app.notion.com/p/3aa9435d839080ba8b15e9fbbeaffe6c" target="_blank">Ver todas →</a>
-      </div>
-      <div class="task-item"><span class="task-name">Actualización Diversidad e inclusión</span><span class="badge badge-amber">En curso</span></div>
-      <div class="task-item"><span class="task-name">Presentar resultados de la revisión</span><span class="badge badge-blue">Reciente</span></div>
-      <div class="task-item"><span class="task-name">Seguimiento Venta Consultiva</span><span class="badge badge-amber">En curso</span></div>
-      <div class="task-item"><span class="task-name">Revisión Plataforma Mercado Público</span><span class="badge badge-muted">Recurrente</span></div>
-      <div class="task-item"><span class="task-name">Reunión Certificación Instalador Eléctrico</span><span class="badge badge-blue">Pendiente</span></div>
-      <div class="task-item"><span class="task-name">Seguimiento cotización U. Valparaíso</span><span class="badge badge-amber">En curso</span></div>
-    </div>
-    <div class="panel">
-      <div class="panel-title">
-        <span>Proyectos activos</span>
-        <a href="https://app.notion.com/p/3aa9435d8390806c8a1ed8adba5abe9e" target="_blank">Ver todos →</a>
-      </div>
-      <div class="proj-item"><div class="proj-dot" style="background:#2a78d6"></div><span class="proj-name">Diversidad e Inclusión</span><span class="proj-client">ECS</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#2a78d6"></div><span class="proj-name">Venta Consultiva</span><span class="proj-client">Summit</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#eda100"></div><span class="proj-name">Certif. Instalador Eléctrico</span><span class="proj-client">Inf. Bit</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#2a78d6"></div><span class="proj-name">MPD</span><span class="proj-client">—</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#2a78d6"></div><span class="proj-name">Protección de datos</span><span class="proj-client">—</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#2a78d6"></div><span class="proj-name">Veridio</span><span class="proj-client">—</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#2a78d6"></div><span class="proj-name">Administración de contratos</span><span class="proj-client">—</span></div>
-      <div class="proj-item"><div class="proj-dot" style="background:#eda100"></div><span class="proj-name">Articulate</span><span class="proj-client">—</span></div>
-    </div>
-  </div>
-
+<div class="main" id="mainContent">
+  <div class="loading">Conectando con Notion...</div>
 </div>
 
 <script>
-const grid='#2a2d3e', label='#6b7280';
+const TOKEN = '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';
+const NOTION_VERSION = '2022-06-28';
+const DB = {
+  tareas:       '3aa9435d-8390-8065-b2c9-000b59be7424',
+  proyectos:    '3aa9435d-8390-8081-842f-000b54d7165f',
+  facturas:     '116a3c8e-a0e6-4964-b32f-ecb9d3f73a60',
+  interacciones:'ef9d3538-30c0-41c2-96b8-d487eaced3b5'
+};
 
-new Chart(document.getElementById('c1'),{
-  type:'doughnut',
-  data:{
-    labels:['En curso','Sin iniciar','Completado'],
-    datasets:[{data:[6,2,0],backgroundColor:['#2a78d6','#eda100','#1baf7a'],borderWidth:3,borderColor:'#1a1d27'}]
-  },
-  options:{responsive:true,maintainAspectRatio:false,cutout:'70%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.parsed}`}}}}
-});
+const PROXY = 'https://api.allorigins.win/raw?url=';
 
-new Chart(document.getElementById('c2'),{
-  type:'bar',
-  data:{
-    labels:['Mercado Público','Diversidad','Venta Consult.','Cert. Eléctrico','Otros'],
-    datasets:[{data:[8,4,3,2,3],backgroundColor:'#2a78d6',borderRadius:4,borderSkipped:false}]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,indexAxis:'y',
-    plugins:{legend:{display:false}},
-    scales:{
-      x:{grid:{color:grid},ticks:{color:label,font:{size:11}}},
-      y:{grid:{display:false},ticks:{color:label,font:{size:11}}}
+async function queryDB(dbId, body={}) {
+  const url = `https://api.notion.com/v1/databases/${dbId}/query`;
+  const encoded = PROXY + encodeURIComponent(url);
+  const res = await fetch(encoded, {
+    method:'POST',
+    headers:{
+      'Authorization':'Bearer '+TOKEN,
+      'Notion-Version':NOTION_VERSION,
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({page_size:100, ...body})
+  });
+  if(!res.ok) throw new Error('Error API Notion: '+res.status);
+  return res.json();
+}
+
+function getProp(page, name, fallback='—') {
+  const p = page.properties?.[name];
+  if(!p) return fallback;
+  if(p.type==='title') return p.title?.[0]?.plain_text || fallback;
+  if(p.type==='rich_text') return p.rich_text?.[0]?.plain_text || fallback;
+  if(p.type==='select') return p.select?.name || fallback;
+  if(p.type==='status') return p.status?.name || fallback;
+  if(p.type==='number') return p.number ?? fallback;
+  if(p.type==='date') return p.date?.start || fallback;
+  if(p.type==='relation') return p.relation?.length || 0;
+  return fallback;
+}
+
+function today() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function badgeClass(status) {
+  if(!status || status==='—') return 'badge-muted';
+  const s = status.toLowerCase();
+  if(s.includes('curso')||s.includes('progreso')||s.includes('empezar')) return 'badge-blue';
+  if(s.includes('listo')||s.includes('complet')) return 'badge-green';
+  return 'badge-amber';
+}
+
+function projDotColor(status) {
+  if(!status||status==='—') return 'var(--muted)';
+  const s = status.toLowerCase();
+  if(s.includes('curso')) return 'var(--blue)';
+  if(s.includes('complet')) return 'var(--green)';
+  if(s.includes('pausa')) return 'var(--red)';
+  return 'var(--amber)';
+}
+
+let chartEstado=null, chartTareas=null, chartActividad=null;
+
+function renderCharts(proyData, tareasData) {
+  // Proyectos por estado
+  const estadoMap = {};
+  proyData.forEach(p => {
+    const e = getProp(p,'Estado','Sin estado');
+    estadoMap[e] = (estadoMap[e]||0)+1;
+  });
+  const estadoLabels = Object.keys(estadoMap);
+  const estadoVals = Object.values(estadoMap);
+  const estadoColors = estadoLabels.map(l => {
+    const s=l.toLowerCase();
+    if(s.includes('curso')) return '#2a78d6';
+    if(s.includes('complet')) return '#1baf7a';
+    if(s.includes('pausa')) return '#e34948';
+    return '#eda100';
+  });
+
+  // Tareas por proyecto (top 5)
+  const proyMap = {};
+  tareasData.forEach(t => {
+    const p = t.properties?.Proyectos?.relation?.[0]?.id || 'Sin proyecto';
+    proyMap[p] = (proyMap[p]||0)+1;
+  });
+
+  // Actividad semanal (últimas 7 semanas)
+  const weeks = {};
+  const now = new Date();
+  for(let i=6;i>=0;i--) {
+    const d = new Date(now); d.setDate(d.getDate()-i*7);
+    const label = d.toLocaleDateString('es-CL',{day:'numeric',month:'short'});
+    weeks[label]=0;
+  }
+  tareasData.forEach(t => {
+    const created = t.created_time?.split('T')[0];
+    if(!created) return;
+    const d = new Date(created);
+    const label = d.toLocaleDateString('es-CL',{day:'numeric',month:'short'});
+    if(weeks[label]!==undefined) weeks[label]++;
+  });
+
+  const grid='#2a2d3e', label='#6b7280';
+
+  if(chartEstado) chartEstado.destroy();
+  chartEstado = new Chart(document.getElementById('c1'),{
+    type:'doughnut',
+    data:{
+      labels:estadoLabels,
+      datasets:[{data:estadoVals,backgroundColor:estadoColors,borderWidth:3,borderColor:'#1a1d27'}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'70%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.parsed}`}}}}
+  });
+
+  // Leyenda dinámica
+  const legendEl = document.getElementById('legendEstado');
+  legendEl.innerHTML = estadoLabels.map((l,i)=>
+    `<span class="legend-item"><span class="legend-sq" style="background:${estadoColors[i]}"></span>${l} (${estadoVals[i]})</span>`
+  ).join('');
+
+  if(chartActividad) chartActividad.destroy();
+  chartActividad = new Chart(document.getElementById('c3'),{
+    type:'line',
+    data:{
+      labels:Object.keys(weeks),
+      datasets:[{
+        data:Object.values(weeks),
+        borderColor:'#2a78d6',backgroundColor:'rgba(42,120,214,0.08)',
+        borderWidth:2,pointRadius:4,pointBackgroundColor:'#2a78d6',fill:true,tension:0.35
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{grid:{display:false},ticks:{color:label,font:{size:11}}},
+        y:{grid:{color:grid},ticks:{color:label,font:{size:11},stepSize:1},min:0}
+      }}
+  });
+}
+
+function renderTareas(tareas) {
+  const pendientes = tareas.filter(t => {
+    const s = getProp(t,'est','').toLowerCase();
+    return !s.includes('listo') && !s.includes('complet');
+  });
+  const hoy = tareas.filter(t => {
+    const fecha = getProp(t,'Fecha','');
+    return fecha === today();
+  });
+  return {pendientes, hoy};
+}
+
+async function loadAll() {
+  document.getElementById('mainContent').innerHTML = '<div class="loading">Actualizando datos desde Notion...</div>';
+  try {
+    const [tareasRes, proyRes, facturasRes, interRes] = await Promise.all([
+      queryDB(DB.tareas),
+      queryDB(DB.proyectos),
+      queryDB(DB.facturas),
+      queryDB(DB.interacciones)
+    ]);
+
+    const tareas = tareasRes.results || [];
+    const proyectos = proyRes.results || [];
+    const facturas = facturasRes.results || [];
+    const interacciones = interRes.results || [];
+
+    const {pendientes, hoy} = renderTareas(tareas);
+    const facturasPendientes = facturas.filter(f => {
+      const e = getProp(f,'Estado','').toLowerCase();
+      return !e.includes('pagad');
+    });
+    const proyActivos = proyectos.filter(p => {
+      const e = getProp(p,'Estado','').toLowerCase();
+      return !e.includes('complet');
+    });
+
+    // Construir HTML
+    document.getElementById('mainContent').innerHTML = `
+    <div class="kpi-row">
+      <div class="kpi kpi-blue">
+        <div class="kpi-label">Proyectos activos</div>
+        <div class="kpi-value">${proyActivos.length}</div>
+        <div class="kpi-sub">${proyectos.length} en total</div>
+      </div>
+      <div class="kpi kpi-amber">
+        <div class="kpi-label">Tareas pendientes</div>
+        <div class="kpi-value">${pendientes.length}</div>
+        <div class="kpi-sub">Sin completar</div>
+      </div>
+      <div class="kpi kpi-green">
+        <div class="kpi-label">Tareas para hoy</div>
+        <div class="kpi-value">${hoy.length}</div>
+        <div class="kpi-sub">${today()}</div>
+      </div>
+      <div class="kpi kpi-red">
+        <div class="kpi-label">Facturas por cobrar</div>
+        <div class="kpi-value">${facturasPendientes.length || '—'}</div>
+        <div class="kpi-sub">${facturasPendientes.length ? 'Pendientes de pago' : 'Sin facturas pendientes'}</div>
+      </div>
+      <div class="kpi kpi-purple">
+        <div class="kpi-label">Interacciones</div>
+        <div class="kpi-value">${interacciones.length || '—'}</div>
+        <div class="kpi-sub">Registradas en total</div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-box">
+        <div class="chart-title">Proyectos por estado</div>
+        <div class="legend" id="legendEstado"></div>
+        <div style="position:relative;height:200px">
+          <canvas id="c1"></canvas>
+        </div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">Tareas pendientes por estado</div>
+        <div style="position:relative;height:230px">
+          <canvas id="c2"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-box-wide">
+      <div class="chart-title">Tareas creadas — últimas 7 semanas</div>
+      <div style="position:relative;height:130px">
+        <canvas id="c3"></canvas>
+      </div>
+    </div>
+
+    <div class="bottom-grid">
+      <div class="panel">
+        <div class="panel-title">
+          <span>Tareas pendientes</span>
+          <a href="https://app.notion.com/p/3aa9435d839080ba8b15e9fbbeaffe6c" target="_blank">Ver todas →</a>
+        </div>
+        ${pendientes.slice(0,8).map(t => {
+          const nombre = getProp(t,'Tareas','Sin nombre');
+          const estado = getProp(t,'est','—');
+          return `<div class="task-item">
+            <span class="task-name">${nombre}</span>
+            <span class="badge ${badgeClass(estado)}">${estado}</span>
+          </div>`;
+        }).join('') || '<div class="empty">Sin tareas pendientes 🎉</div>'}
+      </div>
+      <div class="panel">
+        <div class="panel-title">
+          <span>Proyectos activos</span>
+          <a href="https://app.notion.com/p/3aa9435d8390806c8a1ed8adba5abe9e" target="_blank">Ver todos →</a>
+        </div>
+        ${proyActivos.slice(0,8).map(p => {
+          const nombre = getProp(p,'Proyectos','Sin nombre');
+          const estado = getProp(p,'Estado','—');
+          return `<div class="proj-item">
+            <div class="proj-dot" style="background:${projDotColor(estado)}"></div>
+            <span class="proj-name">${nombre}</span>
+            <span class="proj-client">${estado}</span>
+          </div>`;
+        }).join('') || '<div class="empty">Sin proyectos activos</div>'}
+      </div>
+    </div>`;
+
+    // Renderizar gráfico de tareas por estado
+    const estadoTareas = {};
+    pendientes.forEach(t => {
+      const e = getProp(t,'est','Sin estado');
+      estadoTareas[e] = (estadoTareas[e]||0)+1;
+    });
+    const grid='#2a2d3e', lbl='#6b7280';
+    if(chartTareas) chartTareas.destroy();
+    chartTareas = new Chart(document.getElementById('c2'),{
+      type:'bar',
+      data:{
+        labels:Object.keys(estadoTareas),
+        datasets:[{data:Object.values(estadoTareas),backgroundColor:'#2a78d6',borderRadius:4,borderSkipped:false}]
+      },
+      options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+        plugins:{legend:{display:false}},
+        scales:{
+          x:{grid:{color:grid},ticks:{color:lbl,font:{size:11}}},
+          y:{grid:{display:false},ticks:{color:lbl,font:{size:11}}}
+        }}
+    });
+
+    renderCharts(proyectos, tareas);
+
+    // Actualizar fecha
+    const now = new Date();
+    document.getElementById('lastUpdate').textContent =
+      'Actualizado: ' + now.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
+
+  } catch(err) {
+    document.getElementById('mainContent').innerHTML =
+      `<div class="error">Error al conectar con Notion: ${err.message}<br><br>
+      <button class="refresh-btn" onclick="loadAll()">↻ Reintentar</button></div>`;
+  }
+}
+
+loadAll();
+
+// Auto-refresh cada 30 segundos
+let countdown = 30;
+const countEl = document.getElementById('lastUpdate');
+
+setInterval(() => {
+  countdown--;
+  if(countdown <= 0) {
+    countdown = 30;
+    loadAll();
+  } else {
+    const current = countEl.textContent;
+    if(current.includes('Actualizado')) {
+      countEl.textContent = current.split('·')[0].trim() + ` · refresca en ${countdown}s`;
     }
   }
-});
-
-new Chart(document.getElementById('c3'),{
-  type:'line',
-  data:{
-    labels:['27 Jul','3 Ago','10 Ago','17 Ago','24 Ago','31 Ago','1 Sep'],
-    datasets:[{
-      data:[4,5,3,4,9,6,8],
-      borderColor:'#2a78d6',backgroundColor:'rgba(42,120,214,0.08)',
-      borderWidth:2,pointRadius:4,pointBackgroundColor:'#2a78d6',fill:true,tension:0.35
-    }]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false}},
-    scales:{
-      x:{grid:{display:false},ticks:{color:label,font:{size:11}}},
-      y:{grid:{color:grid},ticks:{color:label,font:{size:11},stepSize:2},min:0}
-    }
-  }
-});
+}, 1000);
 </script>
 </body>
 </html>
